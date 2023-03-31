@@ -1,0 +1,5 @@
+Metodo, Tiempo de ejecucion, Numero de comparaciones, Numero de intercambios,
+BinaryInsertionSort,8,253,175,
+MergeSort,1,216,174,
+RadixSort,1,0,0,
+QuickSort,0,0,0,
