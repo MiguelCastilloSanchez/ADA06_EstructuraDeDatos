@@ -2,6 +2,9 @@ package BinaryInsertion;
 
 import java.util.LinkedList;
 
+/**
+ * Clase para realizar el ordenamiento por BinaryInsertionSort
+ */
 public class BinaryInsertionSort {
  private int comparaciones;
  private int intercambios;
@@ -12,6 +15,12 @@ public class BinaryInsertionSort {
     }
 
 
+    /**
+   * Método encargado de iniciar el ordenamiento por BinaryInsertion Sort
+   * @param list lista la cual se va a ordenar 
+   * @param orden tipo de ordenamiento a realizar
+   * @param columna columna de la lista a ordenar
+   */
     public void binaryInsertionSort(LinkedList<String[]> list, int columna, String orden) {
     
 
@@ -67,10 +76,18 @@ public class BinaryInsertionSort {
 
     }
 
+    /**
+     * Metodo encargado de devolver las comparaciones realizadas por el ordenamiento
+     * @return Cantidad de comparaciones
+     */
     public String getComparaciones(){
         return Integer.toString(comparaciones);
     }
 
+    /**
+     * Metodo encargado de devolver los intercambios realizadas por el ordenamiento
+     * @return Cantidad de intercambios
+     */
     public String getIntercambios(){
         return Integer.toString(intercambios);
     }

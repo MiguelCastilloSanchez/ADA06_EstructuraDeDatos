@@ -17,11 +17,15 @@ public class Archivos {
     private LinkedList<String[]> listaMetricas = new LinkedList<String[]>();
     private String orden;
 
+    /**
+     * Constructor
+     * @param orden Orden para el ordenamiento
+     */
     public Archivos(String orden){
         this.orden = orden;
     }
     /**
-     * Recibe los datos del dataset
+     * Recibe los datos del dataset y los datos de las metricas
      * @param archivoEntrada Nombre del archivo csv con los datos de entrada
      */
     public void recibirDatos(String archivoEntrada){
@@ -60,6 +64,11 @@ public class Archivos {
         }
     }
 
+/**
+    * Metodo encargado de generar o modificar el archivo con la lista ordenada
+    * @param columna columna a ordenar
+    * @param archivoSalida nombre del archivo ordenado
+    */
     public void generarSalida(int columna, String archivoSalida){
         //Primero se ordenan los datos
 
@@ -110,6 +119,9 @@ public class Archivos {
         }
     }
 
+    /**
+    * Metodo encargado de guardar las métricas del archivo con estas
+    */
     public void guardarMetricas(){
         File salida = new File("MetricasOrdenamiento.csv");
         if(salida.exists() == false){
