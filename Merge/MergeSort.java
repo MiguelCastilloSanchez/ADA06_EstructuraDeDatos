@@ -15,7 +15,7 @@ public class MergeSort {
    private int intercambios;
 
    /**
-   * Método encargado de iniciar el ordenamiento por Merge Sort
+   * Constructor
    * @param lista lista la cual se va a ordenar 
    * @param orden tipo de ordenamiento a realizar
    * @param columna columna de la lista a ordenar
@@ -32,7 +32,7 @@ public class MergeSort {
 
 
    /**
-   * Método encargado de iniciar el ordenamiento Merge
+   * Metodo encargado de iniciar el ordenamiento Merge sort
    */
    public void mergeSort() {
       workspace = new LinkedList<String[]>();
@@ -43,7 +43,7 @@ public class MergeSort {
    }
 
    /**
-   * Método encargado de realizar el ordenamiento 
+   * Metodo encargado de realizar el ordenamiento 
    * @param lowerBound dato de primero
    * @param upperBound dato de segundo
    */
@@ -60,7 +60,7 @@ public class MergeSort {
 
 
    /**
-    * Método encargado de unir las dos partes ordenadas del MergeSort
+    * Metodo encargado de unir las dos partes ordenadas del MergeSort
     * 
     */
    private void merge(int lowPtr, int highPtr, int upperBound) {
@@ -106,16 +106,17 @@ public class MergeSort {
    }
 
    /**
-    * Método encargado de devolver las comparaciones hechas por el ordenamiento
-    */
-   public String getComparaciones(){
+     * Metodo encargado de devolver las comparaciones realizadas por el ordenamiento
+     * @return Cantidad de comparaciones
+     */
+    public String getComparaciones(){
       return Integer.toString(comparaciones);
-   }
+  }
 
-   
-   /**
-    * Método encargado de devolver los intercambios realizados por el ordenamiento
-    */
+  /**
+   * Metodo encargado de devolver los intercambios realizadas por el ordenamiento
+   * @return Cantidad de intercambios
+   */
    public String getIntercambios(){
       return Integer.toString(intercambios);
    }

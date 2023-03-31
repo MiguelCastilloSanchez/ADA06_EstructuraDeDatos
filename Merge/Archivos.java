@@ -62,7 +62,7 @@ public class Archivos {
 
     
    /**
-    * Método encargado de generar o modificar el archivo con la lista ordenada
+    * Metodo encargado de generar o modificar el archivo con la lista ordenada
     * @param columna columna a ordenar
     * @param archivoSalida nombre del archivo ordenado
     */
@@ -118,7 +118,7 @@ public class Archivos {
 
     
    /**
-    * Método encargado de guardar las métricas del archivo con estas
+    * Metodo encargado de guardar las métricas del archivo con estas
     */
     public void guardarMetricas(){
         File salida = new File("MetricasOrdenamiento.csv");
