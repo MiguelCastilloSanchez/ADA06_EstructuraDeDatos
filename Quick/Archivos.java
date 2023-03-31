@@ -17,6 +17,7 @@ public class Archivos {
     private LinkedList<String[]> listaMetricas = new LinkedList<String[]>();
     private String orden;
 
+    
     public Archivos(String orden){
         this.orden = orden;
     }
@@ -61,6 +62,11 @@ public class Archivos {
         }
     }
 
+    /**
+    * Metodo encargado de generar o modificar el archivo con la lista ordenada
+    * @param columna columna a ordenar
+    * @param archivoSalida nombre del archivo ordenado
+    */
     public void generarSalida(int columna, String archivoSalida){
         //Primero se ordenan los datos
         QuickSort qSort = new QuickSort(lista, orden);
@@ -111,6 +117,9 @@ public class Archivos {
         }
     }
 
+    /**
+    * Metodo encargado de guardar las métricas del archivo con estas
+    */
     public void guardarMetricas(){
         File salida = new File("MetricasOrdenamiento.csv");
         if(salida.exists() == false){

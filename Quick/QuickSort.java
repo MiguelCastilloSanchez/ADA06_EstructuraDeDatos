@@ -2,12 +2,20 @@ package Quick;
 
 import java.util.LinkedList;
 
+/**
+ * Clase para realizar el Quick sort
+ */
 public class QuickSort {
     private LinkedList<String[]> lista;          // ref to array theArray
     private String orden;
     private int comparaciones;
     private int intercambios;
 
+    /**
+     * Constructor
+     * @param lista Lista con los datos a ordenar
+     * @param orden Orden para el ordenamiento
+     */
     public QuickSort(LinkedList<String[]> lista, String orden)   {
       this.lista = lista;
       this.orden = orden;
@@ -16,24 +24,26 @@ public class QuickSort {
     }
 
 
-    public void display() {
-      for(int j=0; j<lista.size(); j++)    // for each element,
-         System.out.print(lista.get(j) + " ");  // display it
-      System.out.println("");
-    }
+    
 
-    public void swap(int i, int j, int columna){
+    /**
+     * Metodo que hace el intercambio de elementos
+     * @param i Posicion del primer elemento
+     * @param j Posicion del segundo elemento
+     */
+    public void swap(int i, int j){
         String[] temp = lista.get(i);
         lista.set(i, lista.get(j));
         lista.set(j, temp);
     }
     
-    /* toma el ultimo elemento como pivote, 
-    coloca el pivote en su posicion correcta del arreglo ordenado,
-    coloca todos los valores mas pequeños (menores a los pivotes)
-    a la izquierda del pivote y coloca todos los valores mas grandes 
-    (mayores a los pivotes) a la derecha del pivote 
-    */
+    /**
+     * Metodo que hace la particion para encontrar las posiciones de los elementos
+     * @param low Indice izquierdo
+     * @param high Indice derecho
+     * @param columna Numero de la columna en la que se basa el ordenamiento
+     * @return Nueva posicion del elemento que se esta comparando
+     */
     public int partition(int low, int high, int columna){
         String pivotAlfabetico = null;
         int pivotNumerico = 0;
@@ -55,28 +65,27 @@ public class QuickSort {
                 // Increment index of
                 // smaller element
                 i++;
-                swap(i, j, columna);
+                swap(i, j);
                 intercambios++;
             }
             }catch(NumberFormatException error){
                 if((lista.get(j)[columna].compareTo(pivotAlfabetico) < 0 && this.orden.equals("1")) || (lista.get(j)[columna].compareTo(pivotAlfabetico) > 0 && this.orden.equals("2"))){
                 i++;
-                swap(i, j, columna);
+                swap(i, j);
                 intercambios++;
                 }
             }   
             comparaciones++;
         }
-        swap(i + 1, high, columna);
+        swap(i + 1, high);
         intercambios++;
         return (i + 1);
     }
     
-     /* The main function that implements QuickSort
-            arr[] --> Array to be sorted,
-            low --> Starting index,
-            high --> Ending index
-    */
+
+    /**
+     * Metodo que inicia el Quick sort
+     */
     void recQSort(int low, int high, int columna){
         if (low < high){
             // pi is partitioning index, arr[p]
@@ -91,10 +100,18 @@ public class QuickSort {
    
     }
 
+    /**
+     * Metodo encargado de devolver las comparaciones realizadas por el ordenamiento
+     * @return Cantidad de comparaciones
+     */
     public String getComparaciones(){
         return Integer.toString(comparaciones);
     }
 
+    /**
+     * Metodo encargado de devolver los intercambios realizadas por el ordenamiento
+     * @return Cantidad de intercambios
+     */
     public String getIntercambios(){
         return Integer.toString(intercambios);
     }
