@@ -17,9 +17,14 @@ import java.util.Scanner;
 public class Archivo {
     public LinkedList<String[]> lista = new LinkedList<String[]>();
     private LinkedList<String[]> listaMetricas = new LinkedList<String[]>();
+    private String orden;
+
+    public Archivo (String orden){
+        this.orden = orden;
+    }
 
     /**
-     * Recibe los datos del dataset
+     * Recibe los datos del dataset y los de las metricas
      * @param archivoEntrada Nombre del archivo csv con los datos de entrada
      */
     public void recibirDatos(String archivoEntrada){
@@ -65,7 +70,7 @@ public class Archivo {
      * @param archivoSalida Nombre del archivo con la lista ordenada
      */
     public void generarSalida(int columna, String archivoSalida){
-        Scanner entrada = new Scanner(System.in);
+        
         String datos = "";
         for(int i=0;i<lista.size();i++){
             datos = datos + lista.get(i)[columna] + ",";
@@ -74,22 +79,22 @@ public class Archivo {
         String[] datosColumna = datos.split(",");
         
                
-        System.out.println("Escriba 1 para orden ascendente. \nEscriba 2 para orden descendente. \nEscriba 3 para orden alfabetico. \nEscriba 4 para orden alfabetico inverso");
-        String orden = entrada.nextLine();
         
         long startTime = System.currentTimeMillis();
         switch (Integer.parseInt(orden)){
             case 1:
-                RadixSort.radixSort(datosColumna);           
+            try{
+                RadixSort.radixSort(datosColumna);   
+            }catch(NumberFormatException error){
+                RadixSort.radixSortAlphabetical(datosColumna);
+            }       
                 break;
             case 2:
+            try{
                 RadixSort.radixSortReverse(datosColumna);
-                break;
-            case 3:
-                RadixSort.radixSortAlphabetical(datosColumna);       
-                break;
-            case 4:
+            }catch(NumberFormatException error){
                 RadixSort.radixSortAlphabeticalReverse(datosColumna);
+            }
                 break;
         } 
         long executionTime = System.currentTimeMillis() - startTime;
@@ -149,6 +154,9 @@ public class Archivo {
         
     }
     
+   /**
+    * Metodo encargado de guardar las métricas del archivo con estas
+    */
        public void guardarMetricas(){
         File salida = new File("MetricasOrdenamiento.csv");
         if(salida.exists() == false){
